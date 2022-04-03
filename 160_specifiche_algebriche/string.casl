@@ -1,0 +1,22 @@
+spec STRING = Nat AND Char
+    then
+    generated type
+        String ::= new | add(String; Char)
+    ops
+        append: String * String -> String
+        length: String -> Nat
+    preds
+        isEmpty: String
+        equal: String * String
+    vars s, s1, s2: String; c: Char
+	. isEmpty(new);
+	. not isEmpty(add(s, c));
+	. length(new) = 0;
+	. length(add(s, c)) = length(s) + 1;
+	. append(s, new) = s;
+	. append(s1,add(s2,c)) = add(append(s1,s2),c)
+	. equal(new,new);
+	. not equal(new,add(s, c));
+	. not equal(add(s, c),new); 
+	. equal(add(s1, c),add(s2, c)) <=> equal(s1,s2);
+end
