@@ -1,0 +1,15 @@
+spec LIST [sort Elem pred le: Elem * Elem] =
+    generated type
+        List ::= nil | cons(Elem;List)
+    ops
+        ins: Elem * List -> List
+    preds
+        sorted: List
+    vars e,h:Elem; l,t:List
+    . ins(e,nil) = cons(e,nil);
+    . le(e,h) => ins(e,cons(h,t)) = cons(e,cons(h,t));
+    . not le(e,h) => ins(e,cons(h,t)) = cons(h,ins(e,t));
+    . sorted(nil);
+    . sorted(cons(e,nil));
+    . sorted(cons(e,cons(h,t))) <=> le(e,h) /\ sorted(cons(h,t))
+end
