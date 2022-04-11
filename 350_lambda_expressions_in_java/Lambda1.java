@@ -11,30 +11,17 @@ public class Lambda1 {
         stampa(a);
 
         List<Integer> b;
-        b = f(a, Lambda1::doppio);
+        b = map(a, n -> 2 * n); // lambda expression o funzione anonima
         stampa(b);
 
-        List<Integer> c = f(a, Lambda1::triplo);
+        List<Integer> c = map(a, n -> 3 * n);
         stampa(c);
 
-        List<Integer> d = f(a, Lambda1::quadrato);
+        List<Integer> d = map(a, n -> n * n);
         stampa(d);
     }
 
-    static Integer doppio(Integer n) {
-        return 2 * n;
-    }
-
-    static Integer triplo(Integer n) {
-        return 3 * n;
-    }
-
-    static Integer quadrato(Integer n) {
-        return n * n;
-    }
-
-
-    private static List<Integer> f(List<Integer> a, Fun g) {
+    private static List<Integer> map(List<Integer> a, Fun g) {
         List<Integer> b;
         b = new ArrayList<Integer>();
         for (Integer e : a) {
