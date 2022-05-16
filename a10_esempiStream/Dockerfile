@@ -6,3 +6,5 @@ WORKDIR home/isa
 
 COPY pom.xml .
 COPY src src/
+
+CMD ["mvn","verify"]
